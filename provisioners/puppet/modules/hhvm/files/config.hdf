@@ -1,0 +1,42 @@
+PidFile = /var/hhvm/hhvm.pid
+
+Eval {
+  JitASize = 134217728
+  JitAStubsSize = 134217728
+  JitGlobalDataSize = 134217728
+}
+
+Server {
+  Port = 8080
+  SourceRoot = /var/www/
+  DefaultDocument = index.php
+}
+
+Log {
+  Level = Warning
+  AlwaysLogUnhandledExceptions = true
+  RuntimeErrorReportingLevel = 8191
+  UseLogFile = true
+  UseSyslog = false
+  File = /var/hhvm/error.log
+  Access {
+    * {
+      File = /var/hhvm/access.log
+      Format = %h %l %u % t \?~@~]%r\?~@~] %>s %b
+    }
+  }
+}
+
+#include "/usr/share/hhvm/hdf/static.mime-types.hdf"
+
+StaticFile {
+  FilesMatch {
+    * {
+      pattern = .*\.(dll|exe)
+      headers {
+        * = Content-Disposition: attachment
+      }
+    }
+  }
+	Extensions : StaticMimeTypes
+}
