@@ -20,10 +20,12 @@ class sources {
 		include_src	=> false
 	}
 
-	apt::source { "puppet_ubuntu_archiv_precise_universe" :
-		location		=> "http://archive.ubuntu.com/ubuntu",
-		release			=> "precise",
-		repos				=> "universe",
-		include_src	=> false
+	apt::source { "puppet_ubuntu_archiv_quantal_universe" :
+		location    => "http://archive.ubuntu.com/ubuntu",
+		release	    => "quantal",
+		repos	    => "universe",
+		key         => '3B4FE6ACC0B21F32',
+		key_server  => 'keys.gnupg.net',
+		include_src => false
 	}
 }
