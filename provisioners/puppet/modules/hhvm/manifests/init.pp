@@ -1,6 +1,6 @@
 class hhvm {
 	package { [ 'hhvm' ]:
-		ensure => '2.2.0',
+		ensure => 'present',
 		require => Exec['apt-get update'],
 	}
 
