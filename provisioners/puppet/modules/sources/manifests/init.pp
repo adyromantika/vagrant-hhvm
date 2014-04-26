@@ -3,8 +3,6 @@ class sources {
 	class { 'apt':
 		always_apt_update    => false,
 		disable_keys         => undef,
-		proxy_host           => false,
-		proxy_port           => '',
 		purge_sources_list   => false,
 		purge_sources_list_d => false,
 		purge_preferences_d  => false,
@@ -17,6 +15,8 @@ class sources {
 		location		=> "http://dl.hhvm.com/ubuntu",
 		release			=> "precise",
 		repos				=> "main",
+		key        => '5A16E7281BE7A449',
+                key_server => 'keys.gnupg.net',
 		include_src	=> false
 	}
 
