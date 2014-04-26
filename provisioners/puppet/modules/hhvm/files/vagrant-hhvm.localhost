@@ -8,9 +8,12 @@ server {
   }
 
   location ~ \.php$ {
-  proxy_set_header   X-Real-IP        $remote_addr;
-  proxy_set_header Host www.facebook.com;
-  proxy_pass   http://localhost:8080;
+        proxy_set_header   X-Real-IP        $remote_addr;
+        root /var/www;
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include        fastcgi_params;
   }
 }
 
